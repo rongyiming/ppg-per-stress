@@ -1,0 +1,21 @@
+# Data and run artefacts (never commit these)
+dataset/*.pkl
+dataset/*.npy
+dataset/VITALDB_10s/
+runs/
+*.pth
+!checkpoints/*.pth
+cache/
+preds/
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+*.egg-info/
+.venv/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store

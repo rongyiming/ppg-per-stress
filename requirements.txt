@@ -1,0 +1,14 @@
+# Versions used to produce the reported results (Linux, CUDA 12.4).
+# Newer 2.x releases of PyTorch are expected to work unchanged.
+
+torch==2.6.0
+numpy==2.2.6
+scipy==1.15.3
+scikit-learn==1.7.2
+pandas==2.3.3
+PyYAML==6.0.3
+tqdm==4.67.3
+joblib==1.5.3
+
+# Rebuilding the pretraining corpus needs extra packages with conflicting
+# pins; see requirements-corpus.txt instead.

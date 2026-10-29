@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the accompanying paper."
+title: "Personalized Expert Routing for Short-Term PPG-Based Stress Detection"
+type: software
+license: MIT
+repository-code: "https://github.com/rongyiming/ppg-per-stress"
+keywords:
+  - photoplethysmography
+  - stress detection
+  - mixture of experts
+  - personalization
+  - wearable sensing
+preferred-citation:
+  type: article
+  title: "Personalized Expert Routing for Short-Term PPG-Based Stress Detection"
+  journal: "Sensors"
+  publisher:
+    name: "MDPI"
+  # Fill in the author list, year, volume and DOI on acceptance.

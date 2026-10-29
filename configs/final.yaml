@@ -1,0 +1,51 @@
+# Configuration used for the reported results.
+#
+# Keys are the long option names of train.py with the leading "--" removed and
+# dashes written as underscores.  Anything not listed here keeps its default,
+# which already equals the value below -- the file exists so that a run can be
+# described, diffed and archived by a single artefact.
+#
+#   python train.py --config configs/final.yaml
+#
+# Command-line flags take precedence: the file only supplies defaults, so any
+# flag given alongside --config overrides the value written here.
+
+# ── Data ────────────────────────────────────────────────────────────────────
+datasets: [WESAD, CLAS, CATSA]
+seed: 42
+fold_idx: -1              # -1 = all five folds
+enrollment_s: 120         # length of the per-subject enrolment segment
+balance_classes: true     # class-balanced (adaptive-stride) window set
+global_ind_norm: false    # fit the descriptor scaler on the training folds only
+
+# ── Backbone / experts ──────────────────────────────────────────────────────
+backbone: inception_time
+expert_num: 4             # K = 4 LSTM experts
+expert_type: lstm
+alpha: 0.3                # weight of the feature gate vs the individual gate
+feature_gate: expert0     # gate input = hidden state of expert 0
+top_k: null               # null = dense softmax routing
+
+# Architecture switches (all true is the configuration used in the paper)
+single_level: true
+use_input_norm: true
+domain_adapter: true
+head_skip: true
+gate_norm: true
+mixstyle: true
+experts: true
+
+# ── Optimisation ────────────────────────────────────────────────────────────
+epochs: 1000
+batch_size: 128
+lr: 1.0e-4
+backbone_lr: 5.0e-5
+weight_decay: 2.0e-3
+patience: 50              # early stopping on validation loss
+unfreeze_all: true
+
+# ── Loss ────────────────────────────────────────────────────────────────────
+lambda1: 1.0              # weight of the expert-diversity term
+lambda2: 0.1              # weight of the routing/consistency term
+focal_gamma: 2.0
+focal_alpha: 0.25
